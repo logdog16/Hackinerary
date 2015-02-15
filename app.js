@@ -1,6 +1,6 @@
 require('coffee-script/register');
 
-var express = require('express'),
+var express = require('express');
   config = require('./config/config'),
   glob = require('glob'),
   mongoose = require('mongoose');
@@ -16,7 +16,10 @@ var models = glob.sync(config.root + '/app/models/*.coffee');
 models.forEach(function (model) {
   require(model);
 });
+
+var newNotis = require('./app/controllers/notifications.coffee');
 var app = express();
+var router = express.Router();
 
 require('./config/express')(app, config);
 
@@ -27,8 +30,13 @@ require('./config/express')(app, config);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//Routes defined in home.coffee
+
+app.post('/api', newNotis.create);
+app.get('/api', newNotis.retrieve);
+app.get('/api/:id', newNotis.retrieve);
+app.put('/api/:id', newNotis.update);
+app.delete('/api/:id', newNotis.delete);
 
 //Start the magic
-app.listen(config.port);
+app.listen(3000);
 console.log('Server is loaded and working!');
