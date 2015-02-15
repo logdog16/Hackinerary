@@ -18,8 +18,17 @@ models.forEach(function (model) {
 });
 var app = express();
 
-
-
 require('./config/express')(app, config);
 
+//Everything above is all housekeeping stuffs
+//Now we get to the real magic
+
+//Parses the input data for easy usage later
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//Routes defined in home.coffee
+
+//Start the magic
 app.listen(config.port);
+console.log('Server is loaded and working!');
