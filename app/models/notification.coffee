@@ -2,11 +2,14 @@ mongoose = require 'mongoose'
 
 Notification = new mongoose.Schema(
   title: String
-  time: String
+  time: Number
   category: Number
   desc: String
   ID: Number
   ong: Boolean
   )
 
-mongoose.model "Notification", Notification
+
+Noti = mongoose.model "Notification", Notification, "notifications"
+
+module.exports = Noti

@@ -1,4 +1,5 @@
 require('coffee-script/register');
+var http = require('http');
 
 var express = require('express');
   config = require('./config/config'),
@@ -11,6 +12,10 @@ var db = mongoose.connection;
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
 });
+db.once('open', function callback () {
+  console.log("h");
+});
+
 
 var models = glob.sync(config.root + '/app/models/*.coffee');
 models.forEach(function (model) {
@@ -29,7 +34,7 @@ require('./config/express')(app, config);
 //Parses the input data for easy usage later
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+//app.use(express.cookieParser());
 
 app.post('/api', newNotis.create);
 app.get('/api', newNotis.retrieve);
