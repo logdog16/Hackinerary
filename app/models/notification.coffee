@@ -4,12 +4,12 @@ Notification = new mongoose.Schema(
   title: String
   time: Number
   category: Number
-  desc: String
+  description: String
   ID: Number
-  ong: Boolean
+  ongoing: Boolean
   )
 
 
-Noti = mongoose.model "Notification", Notification, "notifications"
+Notification = mongoose.model "Notification", Notification, "notifications"
 
-module.exports = Noti
+#module.exports = Notification

@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 
-Noti = require ('../models/notification.coffee')
+Notification = require ('../models/notification.coffee')
 
 exports.retrieve = (req, res) ->
   Resource = mongoose.model('Notification')
@@ -17,7 +17,7 @@ exports.retrieve = (req, res) ->
 
 exports.create = (req, res) ->
 
-  r = new Noti(req.body)
+  r = new Notification(req.body)
   r.save (err, resource) ->
     res.send(500, { error: err }) if err?
     console.log(req.body)
