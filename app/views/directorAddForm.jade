@@ -2,10 +2,13 @@ extends index
 
 block directorAddForm
     form#newNotificationForm(name='addNotification' method='post' action='/addNotification')
+        h2 Title
         input#inputNotificationTitle(type='text', name='notificationTitle')
         br
+        h2 Fuzzy Time
         input#inputNotificationTime(type='number', name='notificationTime', min='3')
         br
+        h2 Notification Description
         textarea#inputNotificationDesc(type='text', name='notificationDesc')
         br
         button#buttonNotificationSubmit(type='submit') Notify!

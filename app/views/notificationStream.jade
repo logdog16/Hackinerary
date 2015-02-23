@@ -1,7 +1,13 @@
 extends index
 
 block notificationStream
-    for notification in notifications
-        h4 #{notification.title}
-        h5 Happening in about #{notification.fuzzytime} minutes.
-        p #{notification.description}
+    div#notificationStreamHeader
+        h2 Notifications
+    
+    div#notificationStream
+        for notification in notifications
+            h4 #{notification.title}
+            h5 Happening in about #{notification.fuzzytime} minutes.
+            p #{notification.description}
+            
+            br
