@@ -8,20 +8,20 @@ config =
     app:
       name: 'hackinerary'
     port: 3000
-    db: 'mongodb://nitrodev:hackme@ds052837.mongolab.com:52837/hack_dev'
+    db: 'mongodb://localhost/hackinerary-development'
 
   test:
     root: rootPath
     app:
       name: 'hackinerary'
     port: 3000
-    db: 'mongodb://localhost/hackinerary_test'
+    db: 'mongodb://localhost/hackinerary-test'
 
   production:
     root: rootPath
     app:
       name: 'hackinerary'
     port: 3000
-    db: 'mongodb://localhost/hackinerary_production'
+    db: 'mongodb://localhost/hackinerary-production'
 
 module.exports = config[env]
