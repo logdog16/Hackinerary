@@ -1,0 +1,11 @@
+extends index
+
+block directorAddForm
+    form#newNotificationForm(name='addNotification' method='notification' action='/addNotification')
+        input#inputNotificationTitle(type='text', name='notificationTitle')
+        br
+        input#inputNotificationTime(type='number', name='notificationTime', min='3')
+        br
+        textarea#inputNotificationDesc(type='text', name='notificationDesc')
+        br
+        button#buttonNotificationSubmit(type='submit') Notify!

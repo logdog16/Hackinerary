@@ -1,0 +1,11 @@
+extends index
+
+block notificationStream
+    for notification in notifications
+        title= notification.title
+        fuzzytime= notification.fuzzytime
+        desc= notification.desc
+        
+        h4 #{title}
+        h5 Happening in about #{fuzzytime}
+        div#notificationDescription #{desc}

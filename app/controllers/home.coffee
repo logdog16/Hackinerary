@@ -1,15 +1,15 @@
 express  = require 'express'
 router = express.Router()
 mongoose = require 'mongoose'
-Article  = mongoose.model 'Article'
+Notifications = require './Notifications'
+Notification  = mongoose.model 'Notification'
 
 module.exports = (app) ->
   app.use '/', router
 
-router.get '/', (req, res, next) ->
+# GET requests
+router.get '/', Notifications.baseHandler
+router.get '/notifications', Notifications.streamHandler
+router.get '/director', Notifications.directorHandler
 
-  Article.find (err, articles) ->
-    return next(err) if err
-    res.render 'index',
-      title: 'Generator-Express MVC'
-      articles: articles
+router.post '/addNotification', Notifications.addHandler

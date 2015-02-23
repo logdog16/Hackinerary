@@ -1,15 +1,21 @@
+# Notification db model
+
 mongoose = require 'mongoose'
+ShortId = require 'mongoose-shortid'
 
-Notification = new mongoose.Schema(
-  title: String
-  time: Number
-  category: Number
-  description: String
-  ID: Number
-  ongoing: Boolean
-  )
+Schema   = mongoose.Schema
 
+NotificationSchema = new Schema(
+    _id:
+        type: ShortId
+        len: 3
+        alphabet: 'abcdefghijklmnopqrstuvwxyz'
+    title: String
+    fuzzytime: Number
+    description: String
+)
 
-Notification = mongoose.model "Notification", Notification, "notifications"
+NotificationSchema.virtual('date')
+  .get (-> this._id.getTimestamp())
 
-#module.exports = Notification
+mongoose.model 'Notification', NotificationSchema
