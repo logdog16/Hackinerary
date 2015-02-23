@@ -1,7 +1,7 @@
 extends index
 
 block directorAddForm
-    form#newNotificationForm(name='addNotification' method='notification' action='/addNotification')
+    form#newNotificationForm(name='addNotification' method='post' action='/addNotification')
         input#inputNotificationTitle(type='text', name='notificationTitle')
         br
         input#inputNotificationTime(type='number', name='notificationTime', min='3')

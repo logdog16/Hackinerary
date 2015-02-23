@@ -7,4 +7,5 @@ block directorConfirmation
     id= notificationID
     h5 #{id}
     p You need this to edit the notification later
-    button#buttonDirectorConfirmation(type='submit' action='/director') Sounds Good!
+    form#formDirectorConfirmation(name='directorConfirmation' method='get' action='/director')
+        button#buttonDirectorConfirmation(type='submit') Sounds Good!

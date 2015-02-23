@@ -3,16 +3,16 @@ router = express.Router()
 mongoose = require 'mongoose'
 Notification  = mongoose.model 'Notification'
 
+Util = {}
+Notifications = {}
+
 module.exports = (app) ->
   app.use '/', router
 
-# GET requests
-router.get '/', baseHandler
-router.get '/notifications', streamHandler
-router.get '/director', directorHandler
-
-# POST request
-router.post '/addNotification', addHandler
+# Returns the given object in reverse order.
+Util.reverseObject = reverseObject = (obj) ->
+    (Object.keys(obj).map (key) ->
+        return obj[key]).reverse()
 
 ###############################################
 #             Callback Handlers               #
@@ -24,9 +24,9 @@ router.post '/addNotification', addHandler
 # Handler for '/', which I've been referring to
 # as the base. Will redirect to the notifications
 # stream.
-baseHandler: (req, res, next) ->
-    router.location '/notifications'
-    router.redirect '/notifications'
+Notifications.baseHandler = baseHandler = (req, res, next) ->
+    res.location '/notifications'
+    res.redirect '/notifications'
 
 #####
 
@@ -35,11 +35,11 @@ baseHandler: (req, res, next) ->
 #
 # Displays the stream of notifications with the
 # newest at the top.
-streamHandler: (req, res, next) ->
+Notifications.streamHandler = streamHandler = (req, res, next) ->
     Notification.find (err, notifications) ->
-      return next(err) if err
-      res.render 'notificationStream',
-        notifications: notifications.reverse
+        return next(err) if err
+        res.render 'notificationStream',
+            notifications: reverseObject(notifications)
 
 #####
 
@@ -49,8 +49,8 @@ streamHandler: (req, res, next) ->
 # Render the director new notification form.
 # The submit button will call the addHandler
 # at '/addNotification'.
-directorHandler: (req, res, next) ->
-    res.render '/directorAddForm'
+Notifications.directorHandler = directorHandler = (req, res, next) ->
+    res.render 'directorAddForm'
 
 #####
 
@@ -60,7 +60,7 @@ directorHandler: (req, res, next) ->
 # '/addNotification' handler
 # Gets the Title, Fuzzy Time, and Description
 # out of the form.
-addHandler: (req, res, next) ->
+Notifications.addHandler = addHandler = (req, res, next) ->
 
     nTitle = req.body.notificationTitle
     nDesc = req.body.notificationDesc
@@ -84,3 +84,11 @@ addHandler: (req, res, next) ->
             notificationID: newnotification._id
 
 #####
+
+# GET requests
+router.get '/', Notifications.baseHandler
+router.get '/notifications', Notifications.streamHandler
+router.get '/director', Notifications.directorHandler
+
+# POST request
+router.post '/addNotification', Notifications.addHandler
