@@ -1,4 +1,4 @@
-extends index
+extends layout
 
 block notificationStream
     div#notificationStreamHeader
@@ -6,8 +6,9 @@ block notificationStream
     
     div#notificationStream
         for notification in notifications
-            h4 #{notification.title}
-            h5 Happening in about #{notification.fuzzytime} minutes.
-            p #{notification.description}
+            div.notification
+                h4#notificationTitle #{notification.title}
+                h5#notificationTime Happening in about #{notification.fuzzytime} minutes.
+                p#notificationDescription #{notification.description}
             
             br

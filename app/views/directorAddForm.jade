@@ -1,14 +1,14 @@
-extends index
+extends layout
 
 block directorAddForm
-    form#newNotificationForm(name='addNotification' method='post' action='/addNotification')
-        h2 Title
-        input#inputNotificationTitle(type='text', name='notificationTitle')
+    form#newNotificationForm(name='addNotification', class='pure-form pure-form-stacked', method='post', action='/addNotification')
+        label(for='title') Title
+        input#inputNotificationTitle(type='text', class='pure-input-rounded', name='notificationTitle', required)
         br
-        h2 Fuzzy Time
-        input#inputNotificationTime(type='number', name='notificationTime', min='3')
+        label(for='fuzzyTime') Approximate Time
+        input#inputNotificationTime(type='number', class='pure-input-rounded' name='notificationTime', min='3', required)
         br
-        h2 Notification Description
-        textarea#inputNotificationDesc(type='text', name='notificationDesc')
+        label(for='description') Notification Description
+        textarea#inputNotificationDesc(type='text', class='pure-input-1-2', name='notificationDesc')
         br
-        button#buttonNotificationSubmit(type='submit') Notify!
+        button#buttonNotificationSubmit(type='submit', class='pure-button pure-button-primary') Notify!

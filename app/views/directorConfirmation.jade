@@ -1,12 +1,13 @@
-extends index
+extends layout
 
 block directorConfirmation
     - var id = notificationID
     
-    h2 YAY!!!
-    h3 YOU ADDED A NEW NOTIFICATION!!!
-    h3 The ID is: #{id}
+    h2#directorConfirmationHeader YAY!!!
+    h3#directorConfirmationSubheader YOU ADDED A NEW NOTIFICATION!!!
+    h3 The ID is:
+      div#idBig #{id}
     p You need this to edit the notification later.
     
     form#formDirectorConfirmation(name='directorConfirmation' method='get' action='/director')
-        button#buttonDirectorConfirmation(type='submit') Sounds Good!
+        button#buttonDirectorConfirmation(type='submit', class='pure-button pure-button-primary') Sounds Good!

@@ -6,10 +6,26 @@ html(lang='en')
         title Hackinerary
         block css
             link(rel='stylesheet', href='/css/style.css')
+            link(rel='stylesheet', href='http://yui.yahooapis.com/pure/0.6.0/pure-min.css')
+              
+            <!--[if lte IE 8]>
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+            <![endif]-->
+            <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+            <!--<![endif]-->
+            
         block js
             script(src='http://localhost:35729/livereload.js')
     body
-    div#header
-        img#logo-text(src='/img/logo-text.png')
     
-    block content
+    div.pure-g.pure-u-1-3
+      block notificationStream
+      block directorAddForm
+      block directorConfirmation
+
+    div.pure-g.pure-u-1-3
+      br
+    
+    div#header
+      img#logo-text.pure-g.pure-u-1-3(src='/img/logo-text.png')
