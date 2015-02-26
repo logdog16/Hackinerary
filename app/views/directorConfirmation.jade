@@ -1,8 +1,9 @@
 extends layout
 
 block directorConfirmation
-    - var id = notificationID
-    
+  - var id = notificationID
+  
+  div.pure-g.pure-u-1-3
     h2#directorConfirmationHeader YAY!!!
     h3#directorConfirmationSubheader YOU ADDED A NEW NOTIFICATION!!!
     h3 The ID is:
@@ -10,4 +11,4 @@ block directorConfirmation
     p You need this to edit the notification later.
     
     form#formDirectorConfirmation(name='directorConfirmation' method='get' action='/director')
-        button#buttonDirectorConfirmation(type='submit', class='pure-button pure-button-primary') Sounds Good!
+      button#buttonDirectorConfirmation(type='submit', class='pure-button pure-button-primary') Sounds Good!
