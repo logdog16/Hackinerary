@@ -2,20 +2,21 @@ extends layout
 
 block notificationStream
   - var fuzzIncrements = 15
-    div#notificationStreamHeader
+    div#notificationStreamHeader.pure-u-1-2
         h2 Notifications
 
     div#notificationStream
         for notification in notifications
-          -var fuzzedTime = notification.fuzzytime / fuzzIncrements
-          - fuzzedTime = Math.floor(fuzzedTime)
-          - fuzzedTime = fuzzedTime * fuzzIncrements
-            div.notification
+            div.pure-u-1-3.notification
                 h4#notificationTitle #{notification.title}
-                if fuzzedTime != 0
-                  h5 Happening in about #{fuzzedTime} minutes.
+                if (15 * (Math.floor(notification.fuzzytime / fuzzIncrements))) != 0
+                  h5 Happening in about #{15 * (Math.floor(notification.fuzzytime / fuzzIncrements))} minutes.
                 else
                   h5 Happening soon!
                 p#notificationDescription #{notification.description}
+
+            br
+
+            div.pure-u-1-3
 
             br
