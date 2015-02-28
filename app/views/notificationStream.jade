@@ -1,6 +1,12 @@
 extends layout
 
 block notificationStream
+  
+  script(type='text/javascript').
+    setTimeout(function(){
+      window.location.reload(1);
+      }, 5000);
+      
   - var fuzzIncrements = 15
     div#notificationStreamHeader.pure-u-1-2
         h2 Notifications
