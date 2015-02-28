@@ -1,0 +1,20 @@
+extends layout
+
+block updateNotificationForm
+  form.pure-g.pure-u-1-3#editNotificationForm(name='updateNotification', class='pure-form pure-form-stacked', method='put', action='/updateNotification')
+    label(for='ID') ID
+    input#inputNotificationID(type='text', value='#{notification._id}', class='pure-input-rounded', name='notificationID', readonly)
+    
+    label(for='title') Title
+    input#inputNotificationTitle(type='text', value='#{notification.title}', class='pure-input-rounded', name='notificationTitle', required)
+    br
+    
+    label(for='fuzzyTime') Approximate Time
+    input#inputNotificationTime(type='number', value='#{notification.fuzzytime}', class='pure-input-rounded' name='notificationTime', min='3', required)
+    br
+    
+    label(for='description') Notification Description
+    textarea#inputNotificationDesc(type='text', value='#{notification.description}', class='pure-input-1-2', name='notificationDesc')
+    br
+    
+    button#buttonNotificationSubmit(type='submit', class='pure-button pure-button-primary') Update!

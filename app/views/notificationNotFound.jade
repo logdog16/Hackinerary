@@ -1,0 +1,9 @@
+extends layout
+
+block notificationNotFound
+  h2 Notification not found!!! :(
+  br
+  h4 Notification id #{queryid} does not exist!
+  
+  form#secondChanceForm(name='secondChanceForm', method='get', action='/searchNotification')  
+    button#secondChance(type='submit', class='pure-button pure-button-primary') Dangnabbit!

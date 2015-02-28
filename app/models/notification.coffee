@@ -6,13 +6,13 @@ ShortId = require 'mongoose-shortid'
 Schema   = mongoose.Schema
 
 NotificationSchema = new Schema(
-    _id:
-        type: ShortId
-        len: 3
-        alphabet: 'abcdefghijklmnopqrstuvwxyz'
-    title: String
-    fuzzytime: Number
-    description: String
+  _id:
+    type: ShortId
+    len: 3
+    alphabet: 'abcdefghijklmnopqrstuvwxyz'
+  title: String
+  fuzzytime: Number
+  description: String
 )
 
 NotificationSchema.virtual('date')

@@ -1,6 +1,7 @@
 extends layout
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+block error
+  div.pure-g.pure-u-1-2
+    h2 #{message}
+    h4#notificationTitle #{error.status}
+    p#pure-g.pure-u-1-2 #{error.stack}
