@@ -1,7 +1,7 @@
 extends layout
 
 block updateNotificationForm
-  form.pure-g.pure-u-1-3#editNotificationForm(name='updateNotification', class='pure-form pure-form-stacked', method='put', action='/updateNotification')
+  form.pure-g.pure-u-1-3#editNotificationForm(name='updateNotification', class='pure-form pure-form-stacked', method='post', action='/updateNotification')
     label(for='ID') ID
     input#inputNotificationID(type='text', value='#{notification._id}', class='pure-input-rounded', name='notificationID', readonly)
     

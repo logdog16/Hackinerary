@@ -150,7 +150,7 @@ updateNotificationHandler = (req, res, next) ->
     res.render 'directorConfirmation',
       notificationID: notification._id
     )
-    
+
 # GET requests
 router.get '/', Notifications.baseHandler
 router.get '/notifications', Notifications.streamHandler
@@ -158,8 +158,7 @@ router.get '/director', Notifications.directorHandler
 router.get '/searchNotification', Notifications.searchHandler
 
 # PUT requests
-router.put '/updateNotification',
-Notifications.updateNotificationHandler
+router.post '/updateNotification', Notifications.updateNotificationHandler
 
 # POST request
 router.post '/addNotification', Notifications.addHandler
